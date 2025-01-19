@@ -80,7 +80,9 @@ func (e *MyConfig) GetFuncMap() template.FuncMap {
 		"getPermiButton":    functions.GetPermiButton,
 		"getDictLabel":      functions.GetDictLabel,
 		"getDictTypeSelect": functions.GetDictTypeSelect,
-		"getDictTypeRadio":  functions.GetDictTypeRadio,
+		"getDictSelect":     functions.GetDictSelect,
+		"getDictRadio":      functions.GetDictRadio,
+		"getDictTypeRadio":  functions.GetDictRadio, //兼容旧的名称
 		"getDictTypeData":   functions.GetDictTypeData,
 		"Copyright":         functions.GetCopyright,
 		"OssUrl":            functions.GetOssUrl,

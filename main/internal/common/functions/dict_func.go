@@ -26,7 +26,7 @@ func GetDictLabel(dictType string, dictValue interface{}) template.HTML {
 }
 
 // 通用的字典单选框控件  dictType 字典类别  value 默认值
-func GetDictTypeRadio(dictType, name string, value interface{}) template.HTML {
+func GetDictRadio(dictType, name string, value interface{}) template.HTML {
 	result, err := SelectDictDataByType(dictType)
 	if err != nil {
 		return ""
@@ -55,7 +55,7 @@ func GetDictTypeRadio(dictType, name string, value interface{}) template.HTML {
 	return template.HTML(htmlstr)
 }
 
-// 通用的字典下拉框控件  字典类别   html控件id  html控件name html控件class  html控件value  html控件空值标签 是否可以多选
+// GetDictTypeSelect 通用的字典下拉框控件  字典类别   html控件id  html控件name html控件class  html控件value  html控件空值标签 是否可以多选
 func GetDictTypeSelect(dictType, id, name, className, value, emptyLabel, multiple string) template.HTML {
 
 	result, err := SelectDictDataByType(dictType)
@@ -75,6 +75,37 @@ func GetDictTypeSelect(dictType, id, name, className, value, emptyLabel, multipl
 
 	for _, item := range result {
 		if strings.Compare(item.DictValue, value) == 0 {
+			htmlstr += `<option selected value="` + item.DictValue + `">` + item.DictLabel + `</option>`
+		} else {
+			htmlstr += `<option value="` + item.DictValue + `">` + item.DictLabel + `</option>`
+		}
+	}
+
+	htmlstr += `</select>`
+
+	return template.HTML(htmlstr)
+}
+
+// GetDictSelect Select 为GetDictTypeSelect 的简化版，只支持单选下拉，不支持指定样式
+func GetDictSelect(dictType, id, selectedVal, multiple string) template.HTML {
+
+	result, err := SelectDictDataByType(dictType)
+	if err != nil {
+		return ""
+	}
+
+	if result == nil || len(result) <= 0 {
+		return ""
+	}
+	if multiple != "" { //不是空默认多选
+		multiple = "multiple"
+	}
+	htmlstr := `<select id="` + id + `" name="` + id + `" class="form-control m-b" ` + multiple + `>`
+
+	htmlstr += `<option value="">` + `请选择` + `</option>`
+
+	for _, item := range result {
+		if strings.Compare(item.DictValue, selectedVal) == 0 {
 			htmlstr += `<option selected value="` + item.DictValue + `">` + item.DictLabel + `</option>`
 		} else {
 			htmlstr += `<option value="` + item.DictValue + `">` + item.DictLabel + `</option>`
