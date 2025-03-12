@@ -105,6 +105,8 @@ func (e *ConfigDefault) parseVal(val string) string {
 	return val
 }
 
+// 加载yml文件，设置Viper对象，方便后期从该对象中获取配置中的值
+// 为啥不直接解析为对象呢，这样用不复杂吗
 func (e *ConfigDefault) LoadConf() {
 	e.vipperCfg = viper.New()
 	if lv_file.IsFileExist("bootstrap.yml") || lv_file.IsFileExist("bootstrap.yaml") {

@@ -13,6 +13,7 @@ import (
 
 var cfg *MyConfig
 
+// 引入模块时执行
 func init() {
 	GetConfigInstance()
 }
@@ -25,6 +26,7 @@ func (e *MyConfig) IsProxyEnabled() bool {
 	return e.IsProxyEnable()
 }
 
+// 此处设置了一个单例
 func GetConfigInstance() lv_global.IConfig {
 	if cfg == nil {
 		cfg = &MyConfig{}
