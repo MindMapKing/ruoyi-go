@@ -1,23 +1,41 @@
 module simples
 
 require (
+	// 模板库，类似velocity
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
+	// webmvc框架
 	github.com/gin-gonic/gin v1.9.1
+	// 用于接口测试
 	github.com/golang/mock v1.5.0
+	// 生成uuid
 	github.com/google/uuid v1.3.0
+	// 
 	github.com/lostvip-com/lv_framework v1.0.1
+	// 二维码生成
 	github.com/mojocn/base64Captcha v1.2.2
+	// 用于解析 HTTP 请求中的用户代理（User-Agent）字符串
 	github.com/mssola/user_agent v0.5.1
+	// 本地缓存
 	github.com/patrickmn/go-cache v2.1.0+incompatible
+	// 异常处理的工具类
 	github.com/pkg/errors v0.9.1
+	// 系统硬件信息
 	github.com/shirou/gopsutil v2.19.12+incompatible
+	// 日志库
 	github.com/sirupsen/logrus v1.9.0
+	// 类型转换库
 	github.com/spf13/cast v1.5.1
+	// excel操作库
 	github.com/xuri/excelize/v2 v2.8.1
+	// http请求
 	google.golang.org/grpc v1.52.0
+	// 序列化工具
 	google.golang.org/protobuf v1.30.0
+	// yaml解析
 	gopkg.in/yaml.v3 v3.0.1
+	// 持久层实现
 	gorm.io/gorm v1.25.2-0.20230530020048-26663ab9bf55
+	// sql构建器
 	xorm.io/builder v0.3.13
 )
 
